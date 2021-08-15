@@ -122,12 +122,12 @@ font-family: 'Poppins', sans-serif; */
 }
 
 .home-container{
-    min-height: 20vh;
+    min-height: 22vh;
 }
 
 .container{
     width: 90vw;
-    min-height: 50vh;
+    min-height: 51vh;
     margin: 5vh auto;
 }
 
