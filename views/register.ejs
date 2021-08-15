@@ -18,6 +18,7 @@
           class="input-box"
           name="name"
           id="name"
+          required
           <% if(message!="null"){ %>
             value = "<%= user.firstName %>" 
             <% } %>>
@@ -30,6 +31,7 @@
           class="input-box"
           name="userName"
           id="userName"
+          required
           <% if(message!="null"){ %>
             value = "<%= user.userName %>" 
             <% } %>
@@ -37,31 +39,36 @@
         <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
       </div>
       <div class="form-group">
-        <label class="label" for="email">Email address</label>
+        <label class="label" for="email">Email address:</label>
         <input
           type="email"
           class="input-box"
           id="email"
           name="email"
           aria-describedby="emailHelp"
+          required
         />
       </div>
       <div class="form-group">
-        <label class="label" for="password">Password</label>
+        <label class="label" for="password">Password:</label>
         <input
           type="password"
           class="input-box"
           id="password"
           name="password"
+          required
         />
         <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
       </div>
+
+
       <p class="warning">
         <% if(message != "null") { %>
            <%= message %> 
            <% } %>
           </p>
           <div class="form-links">
+      
       <button type="submit" class="btn" id="save">Submit</button>
       <a href="/login" class="btn links" id="cancel">Cancel</a>
           </div>
