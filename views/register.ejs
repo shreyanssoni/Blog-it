@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog|TheLawsBender</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body>
+    <h3 class="heading">Register Form</h3>
+    <form action="/register" method="POST" id="form">
+      <div class="form-group mx-3">
+        <label for="name" class="label">Full Name: </label>
+        <input
+          type="text"
+          class="input-box"
+          name="name"
+          id="name"
+          <% if(message!="null"){ %>
+            value = "<%= user.firstName %>" 
+            <% } %>>
+        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+      <div class="form-group">
+        <label class="label" for="userName">Userame:</label>
+        <input
+          type="text"
+          class="input-box"
+          name="userName"
+          id="userName"
+          <% if(message!="null"){ %>
+            value = "<%= user.userName %>" 
+            <% } %>
+            >
+        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+      <div class="form-group">
+        <label class="label" for="email">Email address</label>
+        <input
+          type="email"
+          class="input-box"
+          id="email"
+          name="email"
+          aria-describedby="emailHelp"
+        />
+      </div>
+      <div class="form-group">
+        <label class="label" for="password">Password</label>
+        <input
+          type="password"
+          class="input-box"
+          id="password"
+          name="password"
+        />
+        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+      <p class="warning">
+        <% if(message != "null") { %>
+           <%= message %> 
+           <% } %>
+          </p>
+          <div class="form-links">
+      <button type="submit" class="btn" id="save">Submit</button>
+      <a href="/login" class="btn links" id="cancel">Cancel</a>
+          </div>
+    </form>
+  </body>
+</html>

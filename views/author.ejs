@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog|TheLawsBender</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <nav id="navbar">
+    <a href="/" class="links" id="header">Blog It!</a>
+  </nav>
+  <div id="main">
+      <h5 class="randomtext">Blogs published by <%=author_name%>:</h5>
+      <div class="container dash">
+      <%if (blogs == ''){ %>
+        <p id="no-blog">Author has published no blogs:/</p>
+      <%} else {%>
+      <% blogs.forEach(element => { %>
+        <% if(element.publish) { %> 
+          <div class="card-ind">
+            <p class="card-date"><%= element.date%></p>
+            <h5 class="card-title"><%=element.title%></h5>
+            <p class="card-text desc"><%=element.description%></p>
+            <div id="links">
+            <a href="/<%=element.username%>/<%=element.id%>" id="read" class="links btn card-text">Read More</a>
+            </div>
+          </div>
+          <%}%>
+          <%});%>
+          <%}%>
+        </div>
+    </div>
+    <footer id="footer">
+      <div class="footer_div">
+      <!-- <p>Blog Website</p> -->
+      <p><i class="fa fa-facebook social fa-2x btn" aria-hidden="true"></i>
+        <i class="fa fa-twitter social fa-2x btn" aria-hidden="true"></i>
+        <i class="fa fa-instagram social fa-2x btn" aria-hidden="true"></i>
+        <i class="fa fa-envelope social fa-2x btn" aria-hidden="true"></i>
+      </p>
+      </div>
+    </footer>
+</body>
+</html>

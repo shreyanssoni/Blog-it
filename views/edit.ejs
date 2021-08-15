@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog|TheLawsBender</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <%let publish = "false"%>
+  <nav id="navbar">
+    <h2 id="header">Blog It!</h2>
+  <form action="/dashboard/<%=blog.id%>?_method=DELETE" method="POST">
+    <button type="submit" class="btn" id="delete">Delete Blog</button>
+</form>
+  </nav>
+
+  <h3 class="heading">Edit Form</h3>
+        <form action="/dashboard/<%=blog.id%>?_method=PUT" method="POST" id="form">
+            <div class="form-group">
+              <label class="label" for="title">Title: </label>
+              <input type="text"
+               class="input-box" 
+               name="title"
+               id="title"
+               required
+               value = "<%=blog.title%>"
+              >            
+            </div>
+
+            <div class="form-group">
+              <label class="label" for="desc">Description: </label>
+              <textarea name="desc" id="desc" required rows="4" class="input-box" style="white-space: pre-wrap !important;"><%=blog.description%></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="content" class="label">Content: </label>
+              <textarea name="content" id="content" required rows="15" class="input-box" style="white-space: pre-wrap !important;"><%=blog.content%></textarea>
+            </div>
+            
+            
+            <div class="form-group">
+              <label class="label" for="tags">Tags: </label>
+              <textarea name="tags" id="tags" required rows="2" class="input-box"  style="white-space: pre-wrap !important;"><%=blog.tags%></textarea>
+            </div>
+
+            <div class="publish">
+                <label class="label publish-label" for="publish">Publish Blog:</label>
+                <input id="publish" name="publish" type="checkbox"
+                <%if(blog.publish == true) {%>
+                  <% publish = 'on' %>
+                  checked
+                 <%}%>
+                />
+            </div> 
+            <div class="form-links">
+            <button type="submit" class="btn" id="save">Save</button>
+            <a href="/dashboard" class="btn links" id="cancel">Cancel</a>
+            </div>
+        </form>
+      <footer id="footer">
+        <div class="footer_div">
+        <!-- <p>Blog Website</p> -->
+        <p><i class="fa fa-facebook social fa-2x btn" aria-hidden="true"></i>
+          <i class="fa fa-twitter social fa-2x btn" aria-hidden="true"></i>
+          <i class="fa fa-instagram social fa-2x btn" aria-hidden="true"></i>
+          <i class="fa fa-envelope social fa-2x btn" aria-hidden="true"></i>
+        </p>
+        </div>
+      </footer>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog|TheLawsBender</title>
+      <link rel="stylesheet" type="text/css" href="css/style.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+      <nav id="navbar">
+        <h2 id="header">Blog It!</h2>
+        <input type="text" class="input" id ="searchinput" name="search" placeholder="Search"><i class="fa fa-search" aria-hidden="true"></i>
+        <a href="login" class="btn links" id="loginlink">Login/Register</a>
+      </nav>
+      <div id="createblog">
+        <p>Publish your passions, your way</p>
+        <!-- <img src="https://source.unsplash.com/1366x325?random" alt="image" id="headimg"> -->
+        <!-- <img src="css/photo_bg.jpg" alt="image" id="headimg"> -->
+        <a href="register" class="btn create links">Create your own Blog</a>
+      </div>
+      <div id="main" class="home-container">
+        <%if (blog == ''){ %>
+          <p id="no-blog">No blogs available :/</p>
+          <%} else {%>
+      <div class="container">
+        <h5 class="randomtext" id="randomtext">Featured Articles: </h5>
+        <% let counter = 0 %>
+      <% blog.forEach(element => { %>
+        <% if(element.publish && counter%2 == 0 ) { %> 
+          <%counter++%>
+          <div class="card">
+          <div class="card-image-1" >
+            <img src= "https://source.unsplash.com/500x450?<%=element.tags%>" alt="This is an image">
+          </div>
+          <div class="card-body">
+            <p class="card-date">Published: <%=element.date%></p>
+            <h5 class="card-title"><%=element.title%></h5>
+            <p class="card-text desc"><%=element.description%></p>
+            <p class="card-text author">Author: <a class="links" href="/<%=element.username%>"><%= element.name%></a></p>
+            <a class="links btn card-text readmore" href="/<%=element.username%>/<%=element.id%>">Read More</a>
+          </div>
+          </div>
+        <%}else if(element.publish && counter%2 != 0){%>
+          <%counter++%>
+          <div class="card">
+          <div class="card-image-2">
+            <img src="https://source.unsplash.com/500x450?<%=element.tags%>" alt="This is an image">
+          </div>
+          <div class="card-body-2">
+            <p class="card-date">Published: <%=element.date%></p>
+            <h5 class="card-title"><%=element.title%></h5>
+            <p class="card-text desc"><%=element.description%></p>
+            <p class="card-text author">Author: <a class="links" href="/<%=element.username%>"><%= element.name%></a></p>
+            <a class="links btn card-text readmore" href="/<%=element.username%>/<%=element.id%>">Read More</a>
+          </div>
+          </div>
+        <%}%>
+        <%if(counter == 0){%>
+          console.log(counter)
+        <%}%>
+          <%});%>
+          <%}%>
+      </div>
+    <!-- <div id="slide">
+      <img src="https://source.unsplash.com/580x400?sky,planes,mountains" alt="Image" class="slideimgs" id="slideimg">
+      <div>
+      <img src="https://source.unsplash.com/285x350?sky" alt="Image" class="slideimgs" id="slideimg2">
+      <img src="https://source.unsplash.com/285x350?air" alt="Image" class="slideimgs" id="slideimg3">
+      </div>
+    </div> -->
+  </div>
+    <footer id="footer">
+      <div class="footer_div">
+      <!-- <p>Blog Website</p> -->
+      <p><i class="fa fa-facebook social fa-2x btn" aria-hidden="true"></i>
+        <i class="fa fa-twitter social fa-2x btn" aria-hidden="true"></i>
+        <i class="fa fa-instagram social fa-2x btn" aria-hidden="true"></i>
+        <i class="fa fa-envelope social fa-2x btn" aria-hidden="true"></i>
+      </p>
+      </div>
+    </footer>
+</body>
+</html>
