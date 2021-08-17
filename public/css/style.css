@@ -104,10 +104,7 @@ font-family: 'Poppins', sans-serif; */
     width: 15em;
     font-size: 0.9rem;
     font-family: 'Schoolbell', cursive;
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
+    border-radius: 4px;
     box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.2);
 }
 
@@ -267,7 +264,7 @@ font-family: 'Poppins', sans-serif; */
     transition: 0.5s;
 }
 
-.fa-search {
+/* .fa-search {
     padding: 0.83em;
     cursor: pointer;
     font-size: 1.2rem;
@@ -278,7 +275,7 @@ font-family: 'Poppins', sans-serif; */
     border-bottom-right-radius: 4px;
     background-color: var(--text-2);
     box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.2);
-}
+} */
 
 #footer{
     display: flex;
@@ -471,8 +468,8 @@ font-family: 'Poppins', sans-serif; */
     box-shadow: 2px 2px 5px rgba(0, 145, 116, 0.2);
     margin: 2vh 1vw;
     border-radius: 8px;
-    padding: 0.3vh 1.2vw;
-    width: 25vw;
+    padding: 0.3vh 1vw;
+    width: 28vw;
     height: 50vh;
 }
 
@@ -483,6 +480,13 @@ font-family: 'Poppins', sans-serif; */
     overflow: hidden;
     white-space: pre-wrap !important;
     height: 18vh;
+}
+
+.card-title{
+    padding-top: 0.8vh;
+    font-size: 1.8rem;
+    overflow: visible;
+    line-height: 2rem;
 }
 
 #links{
@@ -732,4 +736,22 @@ input[type = "checkbox"]{
     margin-left: 1vw;
     width: 100%;
     font-family: 'Indie Flower', cursive;
+}
+
+#results {
+    position: absolute;
+    z-index: 100;
+    color: black;
+    box-shadow: 1px 1px 3px 0px rgb(0 0 0 / 20%);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.dropdown{
+    background-color: white;
+    cursor: pointer;
+    font-size: 0.85rem;
+    padding: 0.8em 12px;
+    width: 15em;
+    border-top: 0.001px solid rgba(49, 49, 49, 0.048);
 }

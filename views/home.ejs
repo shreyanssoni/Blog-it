@@ -11,13 +11,29 @@
     <body>
       <nav id="navbar">
         <h2 id="header">Blog It!</h2>
-        <input type="text" class="input" id ="searchinput" name="search" placeholder="Search"><i class="fa fa-search" aria-hidden="true"></i>
+        <script>
+          function searchBar(value) {
+            let variable = <%- JSON.stringify(login) %>;
+            let length = value.length;
+            document.getElementById("results").innerHTML = ``
+            variable.forEach(element => {
+              let username = element.name
+              if(value.toLowerCase() == username.substring(0, length).toLowerCase() && value != '') {
+                document.getElementById("results").innerHTML += `<a href="/${element.userName}" class="links"><p class="dropdown"> ${username}</p></a>`
+              }
+            });
+            }
+        </script> 
+        <div>
+        <input type="text" class="input" id ="searchinput" name="search" placeholder="Search User" onkeyup= searchBar(this.value)>
+        <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
+        <div id="results">
+        </div>
+        </div>
         <a href="login" class="btn links" id="loginlink">Login/Register</a>
       </nav>
       <div id="createblog">
         <p>Publish your passions, your way</p>
-        <!-- <img src="https://source.unsplash.com/1366x325?random" alt="image" id="headimg"> -->
-        <!-- <img src="css/photo_bg.jpg" alt="image" id="headimg"> -->
         <a href="register" class="btn create links">Create your own Blog</a>
       </div>
       <div id="main" class="home-container">
@@ -57,19 +73,9 @@
           </div>
           </div>
         <%}%>
-        <%if(counter == 0){%>
-          console.log(counter)
-        <%}%>
           <%});%>
           <%}%>
       </div>
-    <!-- <div id="slide">
-      <img src="https://source.unsplash.com/580x400?sky,planes,mountains" alt="Image" class="slideimgs" id="slideimg">
-      <div>
-      <img src="https://source.unsplash.com/285x350?sky" alt="Image" class="slideimgs" id="slideimg2">
-      <img src="https://source.unsplash.com/285x350?air" alt="Image" class="slideimgs" id="slideimg3">
-      </div>
-    </div> -->
   </div>
     <footer id="footer">
       <div class="footer_div">

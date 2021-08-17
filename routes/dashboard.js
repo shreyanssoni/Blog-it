@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const router = express.Router();
 const methodOverride = require('method-override')
 const Blogs = require('./../models/blogs_template')
+const Login = require('./../models/database')
 const { ensureAuthenticated, forwardAuthenticated } = require('../auth');
 const { render } = require('ejs');
 
@@ -20,9 +21,10 @@ router.get('/', ensureAuthenticated, async (req,res)=>{
         email: login.email
     } 
     let blogs = await Blogs.find({email: login.email}).sort({formdate: 'desc'})
+    let logininfo = await Login.find({})
     res.render('dashboard', {
-      full_name: login.name,
-      userName: login.userName,
+      userArr: userArr,
+      login: logininfo,
       blogs: blogs
     })
   })
@@ -63,7 +65,6 @@ router.post('/new', async (req,res)=>{
         publish: publish
     })
     try{
-        // console.log(newBlog)
         await Blog.save();
         res.redirect('/dashboard')
     } catch(e){ 
@@ -100,7 +101,6 @@ router.put('/:id', ensureAuthenticated, async(req,res) => {
 })
 
 router.delete('/:id',ensureAuthenticated, async(req,res)=> {
-    console.log('delete!')
     await Blogs.findByIdAndDelete(req.params.id)
     res.redirect('/');
 })

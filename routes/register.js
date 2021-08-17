@@ -4,6 +4,7 @@ const router = express.Router();
 const LoginInfo = require("./../models/database");
 const { forwardAuthenticated } = require("../auth");
 const { render } = require("ejs");
+const bcrypt = require('bcrypt')
 
 router.get("/", forwardAuthenticated, (req, res) => {
   res.render("register", {
@@ -20,12 +21,19 @@ router.post("/", async (req, res) => {
     password: req.body.password
   };
   let check = await LoginInfo.findOne({ email: newUser.email });
-  const logindb = new LoginInfo({
+  bcrypt.genSalt(10, (err, salt)=> {
+    bcrypt.hash(req.body.password, salt, async(err, hash)=> {
+      if(err) throw err;
+      saveIt(hash);
+    })
+  })
+  async function saveIt(pass) {
+    const logindb = await new LoginInfo({
     name: req.body.name,
     userName: req.body.userName,
     email: req.body.email,
-    password: req.body.password
-  });
+    password: pass
+  }); 
   try {
     if (check != null) {
       res.render("register", {
@@ -41,6 +49,7 @@ router.post("/", async (req, res) => {
   } catch (e) {
     console.log("there was an error!" + e);
   }
+};
 });
 
 module.exports = router;

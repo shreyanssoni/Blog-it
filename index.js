@@ -13,6 +13,7 @@ const Login = require('./models/database')
 const dotenv = require('dotenv')
 const MongoStore = require('connect-mongo');
 const { ensureAuthenticated, forwardAuthenticated } = require('./auth');
+const { response } = require('express');
 
 require('./passport')(passport);
 
@@ -59,8 +60,10 @@ app.use('/dashboard', dashboard)
 app.get('/', forwardAuthenticated, async(req,res)=>{
   try {
   let blogs = await Blogs.find({}).sort({formdate: 'desc'});
+  let logininfo = await Login.find({})
   res.render('home', {
-    blog: blogs
+    blog: blogs,
+    login: logininfo
   });
 } catch(e) { console.log(e)}
 })
