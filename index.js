@@ -56,14 +56,18 @@ mongoose.connect(url, {
 app.use('/login', login);
 app.use('/register', register)
 app.use('/dashboard', dashboard)
-
 app.get('/', forwardAuthenticated, async(req,res)=>{
   try {
   let blogs = await Blogs.find({}).sort({formdate: 'desc'});
   let logininfo = await Login.find({})
+  let info = [];
+  for(var i of logininfo){
+    info.push({name: i.name,
+      userName: i.userName})
+  }
   res.render('home', {
     blog: blogs,
-    login: logininfo
+    login: info
   });
 } catch(e) { console.log(e)}
 })

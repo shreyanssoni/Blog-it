@@ -22,9 +22,14 @@ router.get('/', ensureAuthenticated, async (req,res)=>{
     } 
     let blogs = await Blogs.find({email: login.email}).sort({formdate: 'desc'})
     let logininfo = await Login.find({})
+    let info = [];
+     for(var i of logininfo){
+    info.push({name: i.name,
+      userName: i.userName})
+    }
     res.render('dashboard', {
       userArr: userArr,
-      login: logininfo,
+      login: info,
       blogs: blogs
     })
   })
